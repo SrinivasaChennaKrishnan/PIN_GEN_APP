@@ -1,55 +1,60 @@
 import { GenPinFunction } from "../Common/GenPinFunction";
-import { checkDupNum } from "../Common/GenPinFunction";
-import { checkDescendNumbers } from "../Common/GenPinFunction";
-import { checkAscendNumbers } from "../Common/GenPinFunction";
-import { checkUniqPins } from "../Common/GenPinFunction";
+import { duplicateAndSequenceCheck } from "../Common/GenPinFunction";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import { configure } from "enzyme";
 
 configure({ adapter: new EnzymeAdapter() });
-describe("Generate pin Function", () => {
+
+describe("Test Generate pin Function", () => {
+
   test("Test GenPinFunction", () => {
     let pinFunRes = GenPinFunction();
     expect(pinFunRes).not.toBe(null);
   });
+
   test("Test GenPinFunction output type", () => {
     let pinFunRes = GenPinFunction();
     expect(typeof pinFunRes).toBe("object");
   });
-  test("Test DUPLICATE Number Function", () => {
-    let pinFunRes = checkDupNum(10);
+
+  test("Test DUPLICATE to be false", () => {
+    let pinFunRes = duplicateAndSequenceCheck(101);
     expect(pinFunRes).toBe(false);
   });
-  test("Test DESCENDING Function with the string ", () => {
-    let pinFunRes = checkDescendNumbers("testing");
-    expect(pinFunRes).toBe("gnitset");
-  });
-  test("Test SEQUENCE Function", () => {
-    let pinFunRes = checkAscendNumbers("1234");
+
+  test("Test DESCENDING to be false", () => {
+    let pinFunRes = duplicateAndSequenceCheck(1013);
     expect(pinFunRes).toBe(false);
   });
-  test("Test DUPLICATE Function", () => {
-    let pinFunRes = checkDupNum(103);
+
+  test("Test ASCENDING to be false", () => {
+    let pinFunRes = duplicateAndSequenceCheck(8635);
     expect(pinFunRes).toBe(false);
   });
-  test("Test DESCENDING function", () => {
-    let pinFunRes = checkDescendNumbers("reverse");
-    expect(pinFunRes).toBe("esrever");
-  });
-  test("Test SEQUENCE Function", () => {
-    let pinFunRes = checkAscendNumbers("326");
+
+  test("Test SEQUENCIAL to be false", () => {
+    let pinFunRes = duplicateAndSequenceCheck(4027);
     expect(pinFunRes).toBe(false);
   });
-  test("Test UNIQUE pins Function", () => {
-    let pinFunRes = checkUniqPins(["2758", "1802", "8491"]);
-    expect(pinFunRes).toBe(pinFunRes);
+
+  test("Test DUPLICATE to be true", () => {
+    let pinFunRes = duplicateAndSequenceCheck(1133);
+    expect(pinFunRes).toBe(true);
   });
-  test("Test UNIQUE pins Function", () => {
-    let pinFunRes = checkUniqPins(["2758", "1802", "8491"]);
-    expect(pinFunRes).not.toBe([]);
+
+  test("Test DESCENDING to be true", () => {
+    let pinFunRes = duplicateAndSequenceCheck(3210);
+    expect(pinFunRes).toBe(true);
   });
-  test("Test UNIQUE pins Function", () => {
-    let pinFunRes = checkUniqPins(["2758", "1802", "8491"]);
-    expect(typeof pinFunRes).toBe("object");
+
+  test("Test ASCENDING to be true", () => {
+    let pinFunRes = duplicateAndSequenceCheck(1234);
+    expect(pinFunRes).toBe(true);
   });
+
+  test("Test SEQUENCIAL to be true", () => {
+    let pinFunRes = duplicateAndSequenceCheck(3456);
+    expect(pinFunRes).toBe(true);
+  });
+  
 });

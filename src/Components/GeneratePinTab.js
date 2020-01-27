@@ -12,14 +12,14 @@ class GeneratePinTab extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            generatedPinArray: ['', '', '', '', '']
+            generatedPinArray: ['', '', '', '', ''], alertClass:false
         }
     }
 
     // Called on click of GENERATE button
     generatePin = () => {
         let generatedPinArrayValue = GenPinFunction();
-        this.setState({ generatedPinArray: generatedPinArrayValue });
+        this.setState({ generatedPinArray: generatedPinArrayValue, alertClass:false });
         generatePinAction(generatedPinArrayValue);
     }
 
@@ -44,6 +44,7 @@ class GeneratePinTab extends React.Component {
                 if (existingFlag) {
                     /* Alert when the pin combination already exist in saved list */
                     window.alert("Pin Already exists in Saved pin List !")
+                    this.setState({alertClass:true})
                 }
                 else {
                     /*save pin to the pin list */
@@ -54,9 +55,11 @@ class GeneratePinTab extends React.Component {
                     savePinObj.p4 = genPinList[3];
                     savePinObj.p5 = genPinList[4];
                     savePinAction(savePinObj);
+                    window.alert("Pin Saved !");
                 }
             } else {
                 /* Alert when input fields are empty */
+                this.setState({alertClass:true})
                 window.alert("Pin number cannot be empty !");
             }
         }
@@ -64,6 +67,7 @@ class GeneratePinTab extends React.Component {
 
     render() {
         let generatedPinArray = this.state.generatedPinArray;
+        let isAlert = this.state.alertClass;
         return (
             <React.Fragment>
                 <Container>
@@ -74,7 +78,7 @@ class GeneratePinTab extends React.Component {
                                 {generatedPinArray.map((item, index) => {
                                     return (
                                         <Col xs lg="2" key={index} className={Classes.pinGenCol}>
-                                            <input className={Classes.pinField} type="text" placeholder="1111" readOnly value={item} />
+                                            <input className={isAlert ? Classes.pinFieldAlert : Classes.pinField} type="text" placeholder="1111" readOnly value={item} />
                                         </Col>)
                                 })}
                             </Row>

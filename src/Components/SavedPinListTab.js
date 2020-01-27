@@ -43,19 +43,19 @@ class SavedPinListTab extends React.Component {
                                             <input className={Classes.pinField} onChange={(e) => this.userNameChange(e, item)} type="text" defaultValue={item.userName} />
                                         </Col>
                                         <Col xs lg="1.5" className={Classes.pinFieldCol}>
-                                            <input className={Classes.pinField} type="text" defaultValue={item.p1} />
+                                            <input className={Classes.pinField} type="text" readOnly defaultValue={item.p1} />
                                         </Col>
                                         <Col xs lg="1.5" className={Classes.pinFieldCol}>
-                                            <input className={Classes.pinField} type="text" defaultValue={item.p2} />
+                                            <input className={Classes.pinField} type="text" readOnly defaultValue={item.p2} />
                                         </Col>
                                         <Col xs lg="1.5" className={Classes.pinFieldCol}>
-                                            <input className={Classes.pinField} type="text" defaultValue={item.p3} />
+                                            <input className={Classes.pinField} type="text" readOnly defaultValue={item.p3} />
                                         </Col>
                                         <Col xs lg="1.5" className={Classes.pinFieldCol}>
-                                            <input className={Classes.pinField} type="text" defaultValue={item.p4} />
+                                            <input className={Classes.pinField} type="text" readOnly defaultValue={item.p4} />
                                         </Col>
                                         <Col xs lg="1.5" className={Classes.pinFieldCol}>
-                                            <input className={Classes.pinField} type="text" defaultValue={item.p5} />
+                                            <input className={Classes.pinField} type="text" readOnly defaultValue={item.p5} />
                                         </Col>
                                         <Col xs lg="1.5" className={Classes.pinFieldCol}>
                                             <input className={Classes.deleteButton} item={item} onClick={() => { this.deletePin(item)}} type="button" value="DELETE" />
