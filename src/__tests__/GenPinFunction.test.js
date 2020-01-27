@@ -9,47 +9,47 @@ import { configure } from "enzyme";
 configure({ adapter: new EnzymeAdapter() });
 describe("Generate pin Function", () => {
   test("Test GenPinFunction", () => {
-    let inst = GenPinFunction();
-    expect(inst).not.toBe(null);
+    let pinFunRes = GenPinFunction();
+    expect(pinFunRes).not.toBe(null);
   });
   test("Test GenPinFunction output type", () => {
-    let inst = GenPinFunction();
-    expect(typeof inst).toBe("object");
+    let pinFunRes = GenPinFunction();
+    expect(typeof pinFunRes).toBe("object");
   });
   test("Test DUPLICATE Number Function", () => {
-    let inst = checkDupNum(10);
-    expect(inst).toBe(false);
+    let pinFunRes = checkDupNum(10);
+    expect(pinFunRes).toBe(false);
   });
   test("Test DESCENDING Function with the string ", () => {
-    let inst = checkDescendNumbers("testing");
-    expect(inst).toBe("gnitset");
+    let pinFunRes = checkDescendNumbers("testing");
+    expect(pinFunRes).toBe("gnitset");
   });
   test("Test SEQUENCE Function", () => {
-    let inst = checkAscendNumbers(10);
-    expect(inst).toBe(false);
+    let pinFunRes = checkAscendNumbers("1234");
+    expect(pinFunRes).toBe(false);
   });
   test("Test DUPLICATE Function", () => {
-    let inst = checkDupNum(10);
-    expect(inst).toBe(false);
+    let pinFunRes = checkDupNum(103);
+    expect(pinFunRes).toBe(false);
   });
   test("Test DESCENDING function", () => {
-    let inst = checkDescendNumbers("reverse");
-    expect(inst).toBe("esrever");
+    let pinFunRes = checkDescendNumbers("reverse");
+    expect(pinFunRes).toBe("esrever");
   });
   test("Test SEQUENCE Function", () => {
-    let inst = checkAscendNumbers(10);
-    expect(inst).toBe(false);
+    let pinFunRes = checkAscendNumbers("326");
+    expect(pinFunRes).toBe(false);
   });
   test("Test UNIQUE pins Function", () => {
-    let inst = checkUniqPins(["4785", "8564", "1542"]);
-    expect(inst).toBe(inst);
+    let pinFunRes = checkUniqPins(["2758", "1802", "8491"]);
+    expect(pinFunRes).toBe(pinFunRes);
   });
   test("Test UNIQUE pins Function", () => {
-    let inst = checkUniqPins(["4785", "8564", "1542"]);
-    expect(inst).not.toBe([]);
+    let pinFunRes = checkUniqPins(["2758", "1802", "8491"]);
+    expect(pinFunRes).not.toBe([]);
   });
   test("Test UNIQUE pins Function", () => {
-    let inst = checkUniqPins(["4785", "8564", "1542"]);
-    expect(typeof inst).toBe("object");
+    let pinFunRes = checkUniqPins(["2758", "1802", "8491"]);
+    expect(typeof pinFunRes).toBe("object");
   });
 });
