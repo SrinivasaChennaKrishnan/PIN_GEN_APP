@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { GeneratePinTab } from "../Components/GeneratePinTab";
+import GeneratePinTab from "../Components/GeneratePinTab";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import { configure } from "enzyme";
 
@@ -34,5 +34,4 @@ describe("Test Generate Pin Tab", () => {
   test("Check Buttons count", () => {
     expect(wrapper.find("button").length).toEqual(2);
   });
-
 });
